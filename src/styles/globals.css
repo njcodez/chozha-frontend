@@ -5,13 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif,
+
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
 @theme inline {
-  --font-heading: var(--font-sans);
-  --font-sans: var(--font-sans);
+  --font-heading: var(--font-catamaran);
+  --font-sans: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -132,3 +132,20 @@
     @apply font-sans;
   }
 }
+
+
+.card { @apply bg-white border border-stone-200 rounded-xl overflow-hidden transition-all duration-200; }
+.card:hover { @apply shadow-lg -translate-y-0.5; }
+.dropzone { @apply border-2 border-dashed border-stone-300 rounded-xl transition-colors; }
+.dropzone.active { @apply border-amber-400 bg-amber-50; }
+.error-banner { @apply bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm; }
+.btn-secondary { @apply border border-stone-200 rounded-lg px-4 py-2.5 hover:border-amber-400 hover:bg-amber-50 transition-colors; }
+.toggle { position: relative; display: inline-block; width: 42px; height: 24px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #d6d3d1; border-radius: 24px; transition: .2s; }
+.toggle-slider::before { content: ""; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: .2s; }
+input:checked + .toggle-slider { background: #c9952a; }
+input:checked + .toggle-slider::before { transform: translateX(18px); }
+.skeleton { @apply bg-stone-200 animate-pulse; }
+.animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
