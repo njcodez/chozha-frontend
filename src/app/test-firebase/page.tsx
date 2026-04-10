@@ -7,8 +7,20 @@ export default function TestFirebase() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getApiUrl().then(setUrl).finally(() => setLoading(false));
-  }, []);
+  const fetchUrl = async () => {
+    try {
+      const result = await getApiUrl();
+      setUrl(result);
+    } catch (err) {
+      console.error("Failed to fetch API URL:", err);
+      setUrl(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchUrl();
+}, []);
 
   return (
     <div className="p-4">
